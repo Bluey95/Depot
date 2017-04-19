@@ -10,6 +10,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+        @products = Product.find(params[:id])
+		respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @product }
+    end
   end
 
   # GET /products/new
@@ -44,6 +49,10 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
+		
+		@products = Product.all
+        ActionCable.server.broadcast 'products',
+        html: render_to_string('store/index', layout: false)
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -60,6 +69,20 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+	def who_bought
+	@product = Product.find(params[:id])
+	@latest_order = @product.orders.order(:updated_at).last
+	if stale?(@latest_order)
+	respond_to do |format|
+	format.atom
+	end
+	end
+	end
+  
+
+  
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,4 +94,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
     end
+	
 end

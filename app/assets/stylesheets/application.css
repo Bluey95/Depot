@@ -10,6 +10,159 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap.min
  *= require_tree .
  *= require_self
  */
+ 
+  
+ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
+
+ #banner {
+ position: relative;
+ min-height: 40px;
+ background: #141;
+ padding: 10px;
+ border-bottom: 2px solid;
+ font: small-caps 40px/40px "Times New Roman", serif;
+ color: #282;
+ text-align: left;
+ }
+
+ #image {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 192px;
+ padding: 0px;
+ }
+ 
+ 
+ #notice {
+ color: #000 !important;
+ border: 2px solid red;
+ padding: 1em;
+ margin-bottom: 2em;
+ background-color: #f0f0f0;
+ font: bold smaller sans-serif;
+ }
+
+ #notice:empty {
+ display: none
+ }
+
+ #columns {
+ background: #141;
+ display: flex;
+ }
+
+ #main {
+ padding: 1em;
+ background: white;
+ flex: 1;
+ }
+ 
+ #side {
+ padding: 1em 2em;
+ background: #9c9;
+ 
+form, div {
+ display: inline;
+ }
+
+ input {
+ font-size: small;
+ }
+
+ #cart {
+ font-size: smaller;
+ color: white;
+
+ table{
+ border-top-color: 1px dotted #595;
+ border-bottom-color: 1px dotted #9c9;
+ margin-bottom: 10px;
+ }
+ }
+  
+ ul {
+ padding: 0;
+ }
+ 
+p {
+      color: white;
+      font-size: large;
+    }
+
+ li {
+ list-style: none;
+ }
+
+ a {
+ color: #bfb;
+ font-size: small;
+ }
+ }
+
+ @media all and (max-width: 800px) {
+ #columns {
+ flex-direction: column-reverse;
+ }
+ }
+
+ @media all and (max-width: 500px) {
+ #banner {
+ height: 1em;
+ }
+ }
+
+ #banner .title {
+ display: none;
+ }
+	
+fieldset {
+background: #efe;
+border: 5px solid ;
+padding: 15px;
+border-color: #9c9;
+}
+
+fieldset legend {
+color: #dfd;
+background-color: #141;
+font-family: sans-serif;
+padding: 0.2em 1em;
+}
+
+
+div {
+margin-bottom: 0.3em;
+}
+
+form {
+label {
+width: 5em;
+float: left;
+text-align: right;
+padding-top: 0.2em;
+margin-right: 0.1em;
+display: block;
+}
+
+select, textarea, input {
+margin-left: 0.5em;
+}
+
+submit {
+margin-left: 4em;
+}
+
+br {
+display: none
+}
+}
+
+ 
+
+ 
+

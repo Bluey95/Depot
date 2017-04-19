@@ -1,0 +1,35 @@
+<% unless cart.line_items.empty? %>
+<h2>Your Pragmatic Cart</h2>
+<style>
+ table{
+ border-top: 1px dotted #141;
+ border-bottom: 1px dotted #141;
+ margin-bottom: 10px;
+ }
+
+ .total_line{
+ border-top: 1px solid #141;
+ text-align: right;
+ }
+ 
+ .total_cell{
+ font-weight: bold}
+ }
+</style>
+<table>
+<%= render(@cart.line_items)%>
+ <tr class="total_line">
+ <td colspan="2">Total</td>
+ <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
+ </tr>
+ </table>
+
+<%= button_to "Place Order", new_order_path, method: :get, :action => :checkout if @order.nil? %>
+<%= button_to 'Empty cart', @cart, method: :delete, remote: true,
+data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
+
+<% end  %>
+

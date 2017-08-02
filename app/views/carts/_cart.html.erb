@@ -1,5 +1,5 @@
 <% unless cart.line_items.empty? %>
-<h2>Your Pragmatic Cart</h2>
+<h2><%= t('.title') %></h2>
 <style>
  table{
  border-top: 1px dotted #141;
@@ -24,8 +24,8 @@
  </tr>
  </table>
 
-<%= button_to "Place Order", new_order_path, method: :get, :action => :checkout if @order.nil? %>
-<%= button_to 'Empty cart', @cart, method: :delete, remote: true,
+<%= button_to t('.checkout'), new_order_path, method: :get, :action => :checkout if @order.nil? %>
+<%= button_to t('.empty'), @cart, method: :delete, remote: true,
 data: { confirm: 'Are you sure?' } %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |

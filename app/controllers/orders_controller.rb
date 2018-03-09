@@ -7,45 +7,79 @@ class OrdersController < ApplicationController
   #..
   # GET /orders
   # GET /orders.json
+  
   def index
-    @orders = Order.all
+     @orders = Order.all
+    
+    
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-  end
+  @orders = Order.find(params[:id])
+  @order.save()
+  respond_to do |format|
+    format.html #show.html.erb
+    format.json {render json: @order}
+    end
+   end
+   
+   def current_cart
+  # where you should find your current cart, i.e.
+  @current_cart ||= Cart.find(session[:cart_id])
+end
 
   # GET /orders/new
   def new
+    @cart = current_cart
+    
+    if @cart.line_items.empty?
+    redirect_to store_index_url, :notice => "your cart is empty!"
+    return
+    end
+    
     @order = Order.new
+    respond_to do |format|
+    format.html #new.html.erb
+    format.json {render json: @order}
+    
+    end
+    
+    
   end
 
   # GET /orders/1/edit
   def edit
+  @order.save()
   end
 
   # POST /orders
   # POST /orders.json
-  def create
+def create
     @order = Order.new(order_params)
-	@order.add_line_items_from_cart(@cart)
+    @order.add_line_items_from_cart(@cart)
+        respond_to do |format|
+            if @order.save
+                Cart.destroy(session[:cart_id])
+                session[:cart_id] = nil
+                format.html { redirect_to store_index_url, notice:
+                'Thank you for your order.' }
+                format.json { render :show, status: :created,
+                location: @order }
+            else
+                format.html { render :new }
+                format.json { render json: @order.errors,
+                status: :unprocessable_entity }
+            end
+        end
+end
 
-    respond_to do |format|
-      if @order.save
-		Cart.destroy(session[:cart_id])
-		session[:cart_id] = nil
-		OrderMailer.received(@order).deliver_now
-		format.html { redirect_to store_index_url, notice:
-		I18n.t('.thanks') }
-		format.json { render :show, status: :created,
-		location: @order }
-	  else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
+  def checkout
+ @order = Order.new
+ @order.save
+end
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json

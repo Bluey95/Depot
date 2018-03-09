@@ -35,7 +35,24 @@
  position: absolute;
  top: 0;
  left: 0;
- width: 192px;
+ width: 20px;
+ }
+ 
+  #banner.title {
+ text-align: center;
+ color: white;
+}
+ 
+ #banner.links {
+ color: white;
+ float:right;
+ padding-right: 10px;
+ }
+ 
+ #banner.buttons{
+     height: 0.5em; 
+     width: 40px;
+     float:left;
  }
  }
  

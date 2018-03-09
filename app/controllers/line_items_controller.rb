@@ -23,6 +23,11 @@ class LineItemsController < ApplicationController
   # GET /line_items/1/edit
   def edit
   end
+  
+  def current_cart
+  # where you should find your current cart, i.e.
+  @current_cart ||= Cart.find(session[:cart_id])
+end
 
   # POST /line_items
   # POST /line_items.json

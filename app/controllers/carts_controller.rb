@@ -28,6 +28,11 @@ class CartsController < ApplicationController
   def new
     @cart = Cart.new
   end
+  
+  def current_cart
+  # where you should find your current cart, i.e.
+  @current_cart ||= Cart.find(session[:cart_id])
+end
 
   # GET /carts/1/edit
   def edit

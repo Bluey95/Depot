@@ -1,0 +1,61 @@
+sw:
+    layouts:
+        application:
+            BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
+            home: "Nyumbani"
+            questions: "Maswali"
+            news: "Habari"
+            contact: "Mawasiliano"
+            
+    store:
+        index:
+            title_html: "Katalogi"
+            add_html: "Ongeza kwenye rukwama"
+            
+    carts:
+        cart:
+            title: "Rukwama lako"
+            empty: "Ondoa kwenye rukwama"
+            checkout: "Agiza"
+            
+    number:
+        currency:
+          format:
+                unit: "KSh"
+                precision: 2
+                separator: ","
+                delimiter: "."
+                format: "%n&nbsp;%u"
+                
+    orders:
+        new:
+            legend: "Tafadhali jaza fomu"
+        form:
+            name: "Jina"
+            address_html: "Anwani"
+            email: "Barua pepe"
+            pay_type: "Jinsi ya kulipa"
+            pay_prompt_html: "Chagua jinsi za kulipa"
+            submit: "Tuma"
+            
+    activerecord:
+        errors:
+            messages:
+                inclusion: "uliyoeka haiko kwenye orodha. "
+                blank: "liko bure"
+        models:
+            order: "agizo"
+        attributes:
+            order:
+                address: "Anwani"
+                name: "Jina"
+                email: "Barua pepe"
+                pay_type: "Jinsi ya kulipa"
+    errors:
+        template:
+            body: "Kosa ni hizi zifuatazo:"
+            header:
+                one: "Kosa 1 limesababisha kutotumwa kwa fomu "
+                other: "Kosa %{count} zimesababisha %{model} kutotumwa"
+                
+    thanks: "Ahsante"

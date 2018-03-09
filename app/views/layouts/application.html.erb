@@ -3,23 +3,61 @@
   <head>
     <title><%= t('.BLUE BEAUTY PARLOUR') %></title>
     <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/modernizr-2.6.2.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<link href="dist/zoomslider.css" rel="stylesheet">
+<script src="dist/jquery.zoomslider.min.js"></script>
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="%= controller.controller_name %>">
- <div id="banner">
-   <%= form_tag store_index_path, class: 'locale' do %>
+ <nav class="navbar transparent navbar-inverse navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="#">BBP</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'HOME', home_page_path %></li>
+        <li><%= link_to 'ABOUT', pages_about_path%></li>
+        <li><%= link_to 'SERVICES', store_index_path%></li>
+        <li><%= link_to 'PRODUCTS', store_products_index_path%></li>
+        <li><a href="#">CAREERS</a></li>
+        <li><a href="#">MEDIA</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><%= link_to 'LOG IN', login_path, method: :get %></li>
+  <li><%= link_to 'SIGN UP', login_path, method: :get %></li>
+  <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
+      </ul>
+      <form class="form-inline navbar-right">
+      <%= form_tag home_page_path, class: 'locale' do %>
         <%= select_tag 'set_locale',
             options_for_select(LANGUAGES, I18n.locale.to_s),
             onchange: 'this.form.submit()' %>
         <%= submit_tag 'submit' %>
-        <%= javascript_tag "$('.locale input').hide()" %>
+        <%= javascript_tag "$('.locale input').hide()" %></br>
+        <style="color:#000638;"><%= Time.now.month %>/<%= Time.now.day %>/<%= Time.now.year %>
     <% end %>
-    <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
-    <span class="title"><%= @page_title %></span>
- </div>
+  </form>
+    </div>
+  </div>
+</nav>
  <div id="columns">
  <div id="side">
  <% if @cart %>
@@ -28,20 +66,18 @@
 <% end %>
 <% end %>
 <ul>
- <li><a href="http://www...."><%= t('.home') %></a></li>
- <li><a href="http://www..../faq"><%= t('.questions') %></a></li>
- <li><a href="http://www..../news"><%= t('.news') %></a></li>
- <li><a href="http://www..../contact"><%= t('.contact') %></a></li>
-</ul>
+<li><%= link_to 'Visit our blog site', 'https://bluebeauty2017.wordpress.com/', :target => "_blank"%></li>
+
 <% if session[:user_id] %>
 <ul>
 <li><%= link_to 'Orders', orders_path %></li>
 <li><%= link_to 'Products', products_path %></li>
 <li><%= link_to 'Users', users_path %></li>
+<li><%= button_to 'Logout', logout_path, method: :delete %></li>
 </ul>
-<%= button_to 'Logout', logout_path, method: :delete %>
+
 <% end %>
-<p style="color:white;"><%= Time.now.month %>/<%= Time.now.day %>/<%= Time.now.year %></p> 
+
 </div>
  <div id="main">
     <%= yield %>

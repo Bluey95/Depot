@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 skip_before_action :authorize
+layout "pages.html.erb"
   def new
   end
 

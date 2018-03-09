@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.11'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -51,3 +51,21 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'autoprefixer-rails'
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
+
+gem 'shoulda', '~> 3.5'
+
+gem 'jasmine-rails', '~> 0.14.7'
+
+gem 'compass-rails'
+
+gem "font-awesome-rails"
+
+gem 'leaflet-zoomslider-rails'
+
+gem 'magnific-popup-rails', '~> 1.1.0'
+
+gem "bourbon"

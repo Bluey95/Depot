@@ -28,10 +28,17 @@ en:
             questions: "Questions"
             news: "News"
             contact: "Contact"
+            
+        pages:
+            BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
+            home: "Home"
+            questions: "Questions"
+            news: "News"
+            contact: "Contact"
  
     store:
         index:
-            title_html: "Your Pragmatic Catalog"
+            title_html: "Catalog"
             add_html: "Add to Cart"
             
             
@@ -44,7 +51,7 @@ en:
     number:
         currency:
           format:
-                unit: "KSh"
+                unit: "$"
                 precision: 2
                 separator: "."
                 delimiter: ","

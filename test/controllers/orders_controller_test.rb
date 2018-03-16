@@ -49,7 +49,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy order" do
     assert_difference('Order.count', -1) do
-      delete order_url(@order)
+      delete :destroy, id: @order
     end
 	
   test "requires item in cart" do

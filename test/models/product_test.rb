@@ -52,8 +52,9 @@ description: "yyy",
 price: 1,
 image_url: "fred.gif")
 assert product.invalid?
-assert_equal [I18n.translate('errors.messages.taken')],
+# assert_equal [I18n.translate('errors.messages.taken')],
 end
+
 
 test "product title must be at least ten characters long" do
     product = products(:ruby)
@@ -63,5 +64,4 @@ test "product title must be at least ten characters long" do
     assert product.invalid?, "product title shouldn't be valid" 
 end
 end
-
 

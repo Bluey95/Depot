@@ -1,20 +1,2 @@
 <p id="notice"><%= notice %></p>
-<h1>Your Cart</h1>
-<ul>
-<% @cart.line_items.each do |item| %>
-<div class="entry">
-<%= image_tag(item.product.image_url) %>
-<h3><%= item.product.title %></h3>
-<span class="description"><%= sanitize(item.product.description) %></span>
-<div class="price_line">
-<span class="price"><%= number_to_currency(item.product.price) %></span>
-</div>
-</div>
-
-<% end %>
-</ul>
-
-
-
-
-
+<%= render @cart %>

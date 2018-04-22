@@ -1,8 +1,10 @@
 class LineItem < ApplicationRecord
- belongs_to :order, optional: true
- belongs_to :product, optional: true
-belongs_to :cart
-def total_price
-product.price * (quantity || 1)
-end
+  belongs_to :product, optional: true
+  belongs_to :cart, optional: true
+  belongs_to :order, optional:true
+
+  def total_price
+  product.price * (quantity || 1) 
+  end
+
 end

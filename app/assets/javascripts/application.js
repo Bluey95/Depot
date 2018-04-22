@@ -20,7 +20,7 @@
 
 $(window).scroll(function () {
 if ($(window).scrollTop() >= 50) {
-$('.navbar').css('background','#ccceda');
+$('.navbar').css('background','#000638');
 } else {
 $('.navbar').css({"background-color" : "rgba(0,0,0,0.5)"});
 }

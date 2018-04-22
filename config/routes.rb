@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
+  resources :line_item_products
+  resources :line_items
+get 'admin/index'
+
 
   resources :productsonsales
   get 'store_products/index'
+  
+  get '/pages/:page' => 'pages#show'
+ get 'pages/about' => 'pages#about'
+ get 'store/index' => 'store#index'
+ get 'store_products/index' => 'store_products#index'
+ get 'admin' => 'admin#index'
 
-  get 'admin' => 'admin#index'
+  
   controller :sessions do
  get 'login' => :new
  post 'login' => :create
  delete 'logout' => :destroy
- get '/pages/:page' => 'pages#show'
- get 'pages/about' => 'pages#about'
- get 'store/index' => 'store#index'
- get 'store_products/index' => 'store_products#index'
  end
 
   resources :users

@@ -4592,7 +4592,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 6, 56, 1);
     width: 100%;
     box-shadow:none;
     background-image:none;
@@ -4620,21 +4620,21 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-text {
-  color: #000638;
+  color: #cccedf;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #000638;
+  color: #cccedf;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #fff;
-  background-color: #000638;
+  color: #000638;
+  background-color: #ffffff;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #000638;
+  color: #000638;
+  background-color: #ffffff;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
@@ -4660,8 +4660,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 background-color:#000638;}
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  color: #fff;
-  background-color:#000638;
+  color: #000638;
+  background-color:#fff;
 }
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {

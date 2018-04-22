@@ -14,12 +14,14 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     post line_items_url, params: { product_id: products(:ruby).id }
+    post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
     get orders_url
     assert_response :success
   end
 
   test "should get new" do
     post line_items_url, params: { product_id: products(:ruby).id }
+    post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
     get new_order_url
     assert_response :success
   end
@@ -60,8 +62,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   
    test "should get new" do
      post line_items_url, params: { product_id: products(:ruby).id }
-
-     get new_order_url
+     post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
+    get new_order_url
      assert_response :success
   end
 

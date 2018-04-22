@@ -36,6 +36,9 @@ end
     
     if @cart.line_items.empty?
     redirect_to store_index_url, :notice => "your cart is empty!"
+  elsif @cart.line_item_products.empty?
+    redirect_to store_products_index_url, :notice => "your cart is empty!"
+      
     return
     end
     
@@ -59,6 +62,7 @@ end
 def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+     @order.add_line_item_products_from_cart(@cart)
         respond_to do |format|
             if @order.save
                 Cart.destroy(session[:cart_id])
@@ -119,6 +123,9 @@ end
 	def ensure_cart_isnt_empty
       if @cart.line_items.empty?
           redirect_to store_index_url, notice: 'Your cart is empty'
+        end
+        if @cart.line_item_products.empty?
+        redirect_to store_products_index_url, notice: 'Your cart is empty'
       end
       end
 end

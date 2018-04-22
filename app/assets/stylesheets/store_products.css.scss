@@ -1,0 +1,150 @@
+// Place all the styles related to the StoreProducts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "compass/css3";
+
+h1 {
+ margin: 0;
+ padding-bottom: 0.5em;
+ padding-top: 0.5em;
+ font: 150% sans-serif;
+ color: #226;
+ border-bottom: 3px dotted #77d;
+ }
+
+ /* An entry in the store catalog */
+ .entry {
+ overflow: auto;
+ margin-top: 1em;
+ border-bottom: 1px dotted #77d;
+ min-height: 100px;
+
+ img {
+ width: 80px;
+ margin-right: 5px;
+ margin-bottom: 5px;
+ position: absolute;
+ }
+ 
+ .locale {
+float: right;
+margin: -0.25em 0.1em;
+}
+
+ h3 {
+ font-size: 120%;
+ font-family: sans-serif;
+ margin-left: 100px;
+ margin-top: 0;
+ margin-bottom: 2px;
+ color: #227;
+ }
+
+ p, div.price_line {
+ margin-left: 100px;
+ margin-top: 0.5em;
+ margin-bottom: 0.8em;
+ 
+ form, div {
+ display: inline;
+ }
+ }
+
+ .price {
+ color: #44a;
+ font-weight: bold;
+ margin-right: 3em;
+ }
+ }
+ 
+ .description {
+ margin-left: 100px;
+}
+
+
+ // Parameters
+
+ $menuColor:#AFF8C4;
+ $subMenuColor:#9CE0C9;
+ $fontColor: #0E0500;
+ $menuWidth:940px;
+ $backgroundColor:#FFFCF6;
+ $borderRadius:4px;
+ $duration:0.33s;
+
+ body{
+ 	background-color:$backgroundColor;
+ }
+ nav {
+  position: absolute;
+  top: 50%; left: 0; bottom: 50%; right: 0;
+   margin: 0;
+ padding-bottom: 0.5em;
+ padding-top: 0.5em;
+ font: 150% sans-serif;
+ color: #226;
+ border-bottom: 3px dotted #77d;
+ }
+ ul.menu{
+ 	width: $menuWidth;
+ 	height: 40px;
+ 	line-height: 40px;
+ 	position: relative;
+ 	text-align: center;
+ 	margin: auto; 
+ 	padding: auto;
+ 	background-color:$menuColor; 
+ 	@include border-top-radius($borderRadius);
+
+ 	li{
+ 		float: left;
+ 		width: auto;
+ 		a{
+ 			display: block;
+ 			width: auto;
+ 			text-decoration: none;
+ 		}
+ 	}
+ 	li:hover 
+ 	{
+ 		background-color:$subMenuColor;
+ 		@include transition-property(background-color);
+ 		@include transition-duration($duration);
+ 		@include border-top-radius($borderRadius);
+ 		
+ 		ul{
+ 			width: $menuWidth;
+ 			background: $subMenuColor;
+ 			visibility: visible; 
+ 			@include opacity(1);
+ 			@include transition-property(opacity);
+ 			@include transition-duration($duration);
+ 			@include border-bottom-radius($borderRadius);
+ 		}
+ 	}
+ }
+
+ ul.sub-menu{
+ 	@include opacity(0);
+ 	visibility: hidden;
+ 	display:block;
+ 	position: absolute;
+ 	left: 0;
+ 	height: 40px;
+ 	line-height: 40px;
+ 	background-color:$subMenuColor; 
+ 	li:hover{
+ 		@include border-bottom-radius($borderRadius);
+ 	}
+ }
+
+ ul.menu,
+ ul.sub-menu{
+ 	a{
+ 		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+ 		color:$fontColor;
+ 		padding: 0 10px;
+ 	}
+ }
+ 

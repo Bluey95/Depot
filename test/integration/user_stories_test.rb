@@ -12,10 +12,11 @@ include ActiveJob::TestHelper
 test "buying a product" do
 start_order_count = Order.count
 ruby_book = products(:ruby)
+render_views
 
 get "/"
 assert_response :success
-assert_template "index"
+expect(response).to render_template("index")
 
 post '/line_items', params: { product_id: ruby_book.id }, xhr: true
 assert_response :success

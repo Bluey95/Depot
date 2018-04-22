@@ -44,6 +44,11 @@ class ProductsonsalesController < ApplicationController
       if @productsonsale.update(productsonsale_params)
         format.html { redirect_to @productsonsale, notice: 'Productsonsale was successfully updated.' }
         format.json { render :show, status: :ok, location: @productsonsale }
+        
+        @productsonsales = Productsonsale.all? 
+        ActionCable.server.broadcast 'productsonsales',
+        html: render_to_string('store_products/index', layout: false)
+        
       else
         format.html { render :edit }
         format.json { render json: @productsonsale.errors, status: :unprocessable_entity }

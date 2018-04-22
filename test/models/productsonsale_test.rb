@@ -69,7 +69,7 @@ end
                                             price: 1,
                                             image_url: "fred.gif")
         assert productsonsale.invalid?
-        assert_equal [I18n.translate('errors,messages.taken')], productsonsale.errors[:title]
+        assert_equal [I18n.translate('errors.messages.taken')], productsonsale.errors[:title]
 end
 
 

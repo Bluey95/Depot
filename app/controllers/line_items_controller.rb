@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
-    skip_before_action :authorize, only: :create
+
   # GET /line_items
   # GET /line_items.json
   def index
@@ -12,7 +12,6 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
-       @line_item = LineItem.find(params[:id])
   end
 
   # GET /line_items/new
@@ -23,59 +22,17 @@ class LineItemsController < ApplicationController
   # GET /line_items/1/edit
   def edit
   end
-  
-  def current_cart
-  # where you should find your current cart, i.e.
-  @current_cart ||= Cart.find(session[:cart_id])
-end
 
   # POST /line_items
   # POST /line_items.json
-  # PUT /line_items/1
-  # PUT /line_items/1.json
-  def decrease
-    @cart = current_cart
-    @line_item = @cart.decrease(params[:id])
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
-        format.js   { @current_item = @line_item }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /line_items/1
-  # PUT /line_items/1.json
-  def increase
-    @cart = current_cart
-    @line_item = @cart.increase(params[:id])
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
-        format.js   { @current_item = @line_item }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-  
-  
- def create
+  def create
 product = Product.find(params[:product_id])
-@line_item = @cart.add_product(product)
+ @line_item = @cart.add_product(product)
 respond_to do |format|
 if @line_item.save
-format.html { redirect_to store_index_url}
-format.js	{@current_item = @line_item }
-format.json { render :show,
+ format.html { redirect_to store_index_url }
+ format.js { @current_item = @line_item }
+format.js { render :show,
 status: :created, location: @line_item }
 else
 format.html { render :new }
@@ -84,6 +41,7 @@ status: :unprocessable_entity }
 end
 end
 end
+
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
@@ -107,7 +65,6 @@ end
       format.json { head :no_content }
     end
   end
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,4 +1,6 @@
 <% unless cart.line_items.empty? %>
+<% unless cart.line_item_products.empty? %>
+<% unless cart.line_items.empty? %>
 <h2><%= t('.title') %></h2>
 <style>
  table{
@@ -11,13 +13,14 @@
  border-top: 1px solid #141;
  text-align: right;
  }
- 
+
  .total_cell{
  font-weight: bold}
  }
 </style>
 <table>
 <%= render(@cart.line_items)%>
+<%= render(@cart.line_item_products)%>
  <tr class="total_line">
  <td colspan="2">Total</td>
  <td class="total_cell"><%= number_to_currency(@cart.total_price) %></td>
@@ -32,4 +35,5 @@ data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', carts_path %>
 
 <% end  %>
-
+<% end %>
+<% end %>

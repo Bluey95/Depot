@@ -10,6 +10,11 @@ class ProductsonsalesController < ApplicationController
   # GET /productsonsales/1
   # GET /productsonsales/1.json
   def show
+    @productsonsales = Productsonsale.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @productsonsale }
+    end
   end
 
   # GET /productsonsales/new
@@ -63,6 +68,16 @@ class ProductsonsalesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to productsonsales_url, notice: 'Productsonsale was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def who_bought
+    @productsonsale = Productsonsale.find(params[:id])
+    @latest_order = @productsonsale.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to do |format|
+      format.atom
+      end
     end
   end
 

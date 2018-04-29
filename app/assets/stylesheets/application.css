@@ -160,8 +160,8 @@ padding-right:20px;
 
  #side {
  padding: 1em;
+ padding-top: 60px;
  background: #cccedf;
- padding-top:68px;
  height: 100%;
  position: fixed;
  z-index: 1;

@@ -9,16 +9,13 @@ class OrdersController < ApplicationController
   # GET /orders.json
   
   def index
-     @orders = Order.all
-    
-    
+     @orders = Order.all  
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
   @orders = Order.find(params[:id])
-  @order.save()
   respond_to do |format|
     format.html #show.html.erb
     format.json {render json: @order}
@@ -31,25 +28,9 @@ class OrdersController < ApplicationController
 end
 
   # GET /orders/new
-  def new
-    @cart = current_cart
-    
-    if @cart.line_items.empty?
-    redirect_to store_index_url, :notice => "your cart is empty!"
-  elsif @cart.line_item_products.empty?
-    redirect_to store_products_index_url, :notice => "your cart is empty!"
-      
-    return
-    end
-    
+ \
+   def new
     @order = Order.new
-    respond_to do |format|
-    format.html #new.html.erb
-    format.json {render json: @order}
-    
-    end
-    
-    
   end
 
   # GET /orders/1/edit

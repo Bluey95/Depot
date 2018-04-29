@@ -1,4 +1,5 @@
 class LineItemProduct < ApplicationRecord
+	validates :productsonsale_id, presence: true
   belongs_to :productsonsale, optional: true
   belongs_to :order, optional: true
   belongs_to :cart

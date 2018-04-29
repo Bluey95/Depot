@@ -1,4 +1,5 @@
 class LineItemProductsController < ApplicationController
+  skip_before_action :authorize, only: :cretae
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item_product, only: [:show, :edit, :update, :destroy]
@@ -6,12 +7,14 @@ class LineItemProductsController < ApplicationController
   # GET /line_item_products
   # GET /line_item_products.json
   def index
+    @productsonsales = Productsonsale.all
     @line_item_products = LineItemProduct.all
   end
 
   # GET /line_item_products/1
   # GET /line_item_products/1.json
   def show
+    @line_item_products = LineItemProduct.all
   end
 
   # GET /line_item_products/new

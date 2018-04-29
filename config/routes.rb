@@ -12,6 +12,10 @@ get 'admin/index'
  get 'store/index' => 'store#index'
  get 'store_products/index' => 'store_products#index'
  get 'admin' => 'admin#index'
+ get 'orders' => 'orders#index'
+ get 'products' => 'products#index'
+ get 'productsonsales' => 'productsonsales#index'
+ get 'users' => 'users#index'
 
   
   controller :sessions do
@@ -22,6 +26,10 @@ get 'admin/index'
 
   resources :users
   resources :products do
+  get :who_bought, on: :member
+  end
+
+  resources :productsonsales do
   get :who_bought, on: :member
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

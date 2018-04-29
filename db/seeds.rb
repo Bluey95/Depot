@@ -8,51 +8,35 @@
 #---
 # encoding: utf-8
 Productsonsale.delete_all
-Productsonsale.create(title: 'Rails, Angular, Postgres, and Bootstrap',
+Productsonsale.create(title: 'Eye Lashes',
   description:
     %{<p>
-      <em>Powerful, Effective, and Efficient Full-Stack Web Development</em>
-      As a Rails developer, you care about user experience and performance,
-      but you also want simple and maintainable code. Achieve all that by
-      embracing the full stack of web development, from styling with
-      Bootstrap, building an interactive user interface with AngularJS, to
-      storing data quickly and reliably in PostgreSQL. Take a holistic view of
-      full-stack development to create usable, high-performing applications,
-      and learn to use these technologies effectively in a Ruby on Rails
-      environment.
+      <em>Eye lashes</em>
+      Get the best quality eye lashes from our store.
       </p>},
-  image_url: 'dcbang.jpg',    
-  price: 45.00)
+  image_url: 'eyelashes.jpg',    
+  price: 150.00)
 # . . .
-Productsonsale.create(title: 'Seven Mobile Apps in Seven Weeks',
+Productsonsale.create(title: 'Eye Make Up',
   description:
     %{<p>
-      <em>Native Apps, Multiple Platforms</em>
-      Answer the question “Can we build this for ALL the devices?” with a
-      resounding YES. This book will help you get there with a real-world
-      introduction to seven platforms, whether you’re new to mobile or an
-      experienced developer needing to expand your options. Plus, you’ll find
-      out which cross-platform solution makes the most sense for your needs.
+      <em>Complete eye make up set</em>
+      A complete set of eye makeup. Contains eyelashes, mascara, eye shadow, eye liner, eye pencil 
+      and a sealer.
       </p>},
-  image_url: '7apps.jpg',
-  price: 26.00)
+  image_url: 'eyes.png',
+  price: 700.00)
 # . . .
 
-Productsonsale.create(title: 'Ruby Performance Optimization',
+Productsonsale.create(title: 'Face Make Up',
   description:
     %{<p>
-      <em>Why Ruby Is Slow, and How to Fix It</em> 
-      You don’t have to accept slow Ruby or Rails performance. In this
-      comprehensive guide to Ruby optimization, you’ll learn how to write
-      faster Ruby code—but that’s just the beginning. See exactly what makes
-      Ruby and Rails code slow, and how to fix it. Alex Dymo will guide you
-      through perils of memory and CPU optimization, profiling, measuring,
-      performance testing, garbage collection, and tuning. You’ll find that
-      all those “hard” things aren’t so difficult after all, and your code
-      will run orders of magnitude faster.
+      <em>Complete Facial Makeup</em>
+      A complete set of facial make up from Make Up Forever. Contains a primer, concealer, foundation, powder,
+      bronzer, blush, luminizer and a sealer.
       </p>},
-  image_url: 'adrpo.jpg',
-  price: 46.00)
+  image_url: 'face(muf).jpg',
+  price: 1000.00)
   
   Productsonsale.create(title: 'THREE-D-NAILS',
 description:
@@ -64,58 +48,45 @@ image_url: '3D.jpg',
 price: 1500.00)
 
 Product.delete_all
-Product.create(title: 'Rails, Angular, Postgres, and Bootstrap',
+Product.create(title: '3-D NAILS',
   description:
     %{<p>
-      <em>Powerful, Effective, and Efficient Full-Stack Web Development</em>
-      As a Rails developer, you care about user experience and performance,
-      but you also want simple and maintainable code. Achieve all that by
-      embracing the full stack of web development, from styling with
-      Bootstrap, building an interactive user interface with AngularJS, to
-      storing data quickly and reliably in PostgreSQL. Take a holistic view of
-      full-stack development to create usable, high-performing applications,
-      and learn to use these technologies effectively in a Ruby on Rails
-      environment.
+      <em>3-D Nails Manicure</em>
+      Get the best 3-D nails from our beauty parlour. Great looking nails give you the right confidence. 
       </p>},
-  image_url: 'dcbang.jpg',    
+  image_url: '3D.jpg',    
   price: 45.00)
 # . . .
-Product.create(title: 'Seven Mobile Apps in Seven Weeks',
+Product.create(title: 'Air Brushed Nails',
   description:
     %{<p>
-      <em>Native Apps, Multiple Platforms</em>
-      Answer the question “Can we build this for ALL the devices?” with a
-      resounding YES. This book will help you get there with a real-world
-      introduction to seven platforms, whether you’re new to mobile or an
-      experienced developer needing to expand your options. Plus, you’ll find
-      out which cross-platform solution makes the most sense for your needs.
+      <em>Air brushed Nails Manicure</em>
+       Nail polish not working for you? Try using an airbrush. It's quick and perfect. Less Mess. Less Stress.
       </p>},
-  image_url: '7apps.jpg',
+  image_url: 'air.jpg',
   price: 26.00)
 # . . .
 
-Product.create(title: 'Ruby Performance Optimization',
+Product.create(title: 'American Manicure',
   description:
     %{<p>
-      <em>Why Ruby Is Slow, and How to Fix It</em> 
-      You don’t have to accept slow Ruby or Rails performance. In this
-      comprehensive guide to Ruby optimization, you’ll learn how to write
-      faster Ruby code—but that’s just the beginning. See exactly what makes
-      Ruby and Rails code slow, and how to fix it. Alex Dymo will guide you
-      through perils of memory and CPU optimization, profiling, measuring,
-      performance testing, garbage collection, and tuning. You’ll find that
-      all those “hard” things aren’t so difficult after all, and your code
-      will run orders of magnitude faster.
+      <em>American Manicure</em>
+      Forego the classic, stark-white tip for a more neutral one, 
+      creating an even more natural, blended look. 
+      Rather than painting (or airbrushing) the nail tip white, 
+      an American manicure goes with an ivory, off-white or pale nude. 
+      Achieve a near-natural look that is nonetheless luxuriously manicured.</em>
       </p>},
-  image_url: 'adrpo.jpg',
+  image_url: 'american.jpg',
   price: 46.00)
   
-  Product.create(title: 'THREE-D-NAILS',
+  Product.create(title: 'Aromatherapy',
 description:
 %{<p>
-<em>3D NAILS</em>
-This type of nail art is very innovative. You can pick bow-ties, hearts, happy faces, or whichever design you wish fo
-</p>},
+<em>Aromatherapy Massage</em>
+This involves the practice of using the natural oils extracted from flowers, bark, stems, leaves, 
+roots or other parts of a plant to enhance psychological and physical well-being. 
+It is used for a variety of applications, including pain relief, mood enhancement and increased cognitive function.</p>},
 image_url: '3D.jpg',
 price: 1500.00)
 

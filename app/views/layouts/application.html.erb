@@ -20,7 +20,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
   </head>
 
-  <body class="%= controller.controller_name %>">
+  <body class='<%= controller.controller_name %>'>
  <nav class="navbar transparent navbar-inverse navbar-fixed-top">
  <div class="navbar-inner">
   <div class="container-fluid">
@@ -70,19 +70,18 @@
 <% end %>
 <% end %>
 <% end %>
-<ul>
-
-
 <% if session[:user_id] %>
 <ul>
 <li><%= link_to 'Orders', orders_path %></li>
-<li><%= link_to 'Products', products_path %></li>
+<li><%= link_to 'Services', products_path %></li>
+<li><%= link_to 'Products', productsonsales_path %></li>
 <li><%= link_to 'Users', users_path %></li>
 <li><%= button_to 'Logout', logout_path, method: :delete %></li>
 </ul>
 
 <% end %>
 
+</div>
 </div>
  <div id="main">
     <%= yield %>

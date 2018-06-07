@@ -1,21 +1,22 @@
 <p id="notice"><%= notice %></p>
-<h1><%= t('.title_html') %></h1>   
+<h6 style = "float:right"><%= @shown_message %></h6>
+<h1><%= t('.title_html') %></h1>  
 <cache @products do %>
 <% @products.each do |product| %>
-<cache product do>
-<div class="entry">
-<%= image_tag(product.image_url) %>
-<h3><%= product.title %></h3>
-<span class="description"><%= sanitize(product.description) %></span>
-<div class="price_line">
-<span class="price"><%= number_to_currency(product.price) %></span>
-<%= button_to t('.add_html'),
-line_items_path(product_id: product, locale: I18n.locale),
-remote: true %>
-</div>
-</div>
+	<cache product do>
+	<div class="entry col-md-4">
+		<%= link_to image_tag(product.image_url, :style=>'width:100%; height:200px'), line_items_path(:product_id => product), :method => :post, :remote => true %>
+		<h3 style="margin-top: 210px; position: absolute; left: 10px"><%= product.title %></h3>
+		<div class="price_line">
+			<span class="price"><%= number_to_currency(product.price) %></span>
+			<%= button_to t('.add_html'),
+			line_items_path(product_id: product, locale: I18n.locale),
+			remote: true %>
+		</div>
+	</div>
 <% end %>
 	
+
 
  
 

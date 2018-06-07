@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="stylesheets/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/modernizr-2.6.2.min.js"></script>
@@ -34,24 +35,22 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'HOME', home_page_path %></li>
-        <li><%= link_to 'ABOUT', pages_about_path%></li>
-        <li><%= link_to 'SERVICES', store_index_path%></li>
-        <li><%= link_to 'PRODUCTS', store_products_index_path%></li>
-        <li><a href="#">CAREERS</a></li>
-        <li><a href="#">MEDIA</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">CONTACT</a></li>
-        <li><%= link_to 'LOG IN', login_path, method: :get %></li>
-  <li><%= link_to 'SIGN UP', login_path, method: :get %></li>
-  <li><%= link_to 'LOG OUT', logout_path, method: :delete %></li>
+        <li><%= link_to t('.Home'), home_page_path %></li>
+        <li><%= link_to t('.About'), pages_about_path%></li>
+        <li><%= link_to t('.Services'), store_index_path%></li>
+        <li><%= link_to t('.Products'), store_products_index_path%></li>
+        <li><%= link_to t('.Login'), login_path, method: :get %></li>
+        <li><%= link_to t('.Signup'), login_path, method: :get %></li>
+        <li><%= link_to t('.Logout'), logout_path, method: :delete %></li>
+  </ul>
+        
       </ul>
       <form class="form-inline navbar-right">
       <%= form_tag home_page_path, class: 'locale' do %>
         <%= select_tag 'set_locale',
             options_for_select(LANGUAGES, I18n.locale.to_s),
             onchange: 'this.form.submit()' %>
-        <%= submit_tag 'submit' %>
+        <%= submit_tag t('.submit') %>
         <%= javascript_tag "$('.locale input').hide()" %></br>
         <style="color:#000638;"><%= Time.now.month %>/<%= Time.now.day %>/<%= Time.now.year %>
     <% end %>
@@ -72,11 +71,11 @@
 <% end %>
 <% if session[:user_id] %>
 <ul>
-<li><%= link_to 'Orders', orders_path %></li>
-<li><%= link_to 'Services', products_path %></li>
-<li><%= link_to 'Products', productsonsales_path %></li>
-<li><%= link_to 'Users', users_path %></li>
-<li><%= button_to 'Logout', logout_path, method: :delete %></li>
+<li><%= link_to t('.Orders'), orders_path %></li>
+<li><%= link_to t('.Services'), products_path %></li>
+<li><%= link_to t('.Products'), productsonsales_path %></li>
+<li><%= link_to t('.Users'), users_path %></li>
+<li><%= button_to t('.Logout'), logout_path, method: :delete %></li>
 </ul>
 
 <% end %>

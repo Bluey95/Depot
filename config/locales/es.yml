@@ -1,11 +1,17 @@
 es:
     layouts:
         application:
-            BLUE BEAUTY PARLOUR: "Salo'n de belleza azul"
-            home: "Inicio"
-            questions: "Preguntas"
-            news: "Noticias"
-            contact: "Contacto"
+            BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
+            Orders: "Pedidos"
+            Services: "Servicios"
+            Products: "Productos"
+            Users: "Usuarios"
+            Logout: "Cerrar sesión"
+            Home: "Casa"
+            About: "Acerca de"
+            Login: "Iniciar sesión"
+            Signup: "Regístrate"
+            submit: "enviar"
             
         pages:
             BLUE BEAUTY PARLOUR: "Salo'n de belleza azul"
@@ -13,6 +19,7 @@ es:
             questions: "Preguntas"
             news: "Noticias"
             contact: "Contacto"
+            submit: "enviar"
             
     store:
         index:

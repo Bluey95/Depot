@@ -70,5 +70,6 @@ gem 'magnific-popup-rails', '~> 1.1.0'
 
 gem "bourbon"
 
-gem 'rails-controller-testing' 
+gem 'rails-controller-testing'
+
 

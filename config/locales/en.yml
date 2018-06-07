@@ -24,10 +24,16 @@ en:
     layouts:
         application:
             BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
-            home: "Home"
-            questions: "Questions"
-            news: "News"
-            contact: "Contact"
+            Orders: "Orders"
+            Services: "Services"
+            Products: "Products"
+            Users: "Users"
+            Logout: "Logout"
+            Home: "Home"
+            About: "About"
+            Login: "Login"
+            Signup: "Signup"
+            submit: "submit"
             
         pages:
             BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
@@ -35,6 +41,7 @@ en:
             questions: "Questions"
             news: "News"
             contact: "Contact"
+            submit: "submit"
  
     store:
         index:

@@ -5,7 +5,7 @@ validates :title,uniqueness: true, :length => {
     :minimum => 10,
     :message => 'must be at least ten characters long.'
 }
-validates :image_url, allow_blank: true, format: {
+validates :image_url, uniqueness: true, allow_blank: true, format: {
              with: %r{\.(gif|jpg|png)\Z}i,
 message: 'must be a URL for GIF, JPG or PNG image.'
 } 
@@ -13,6 +13,11 @@ message: 'must be a URL for GIF, JPG or PNG image.'
 has_many :line_items
 has_many :orders, through: :line_items
  before_destroy :ensure_not_referenced_by_any_line_item
+
+def self.search(search)
+  where("title LIKE ?", "%#{search}%") 
+end
+
 #...
  private
  # ensure that there are no line items referencing this product

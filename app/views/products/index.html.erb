@@ -1,8 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
+<%= form_tag(products_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+<%= submit_tag "Search" %>
+<% end %>
+<% if @products.present? %>
+  <%= render @products %>
+<% else %>
+  <p>There are no products containing the term(s) <%= params[:search] %>.</p>
+<% end %>
 
 <%= link_to 'New Product', new_product_path %>
+
+<br />
 
 <table>
 <% @products.each do |product| %>
@@ -26,7 +37,7 @@ data: { confirm: 'Are you sure?' } %>
 </tr>
 <% end %>
 </table>
-<br />
+
 
 
 

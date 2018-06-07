@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
+<h6 style = "float:right"><%= @shown_message %></h6>
 <h1>Your Pragmatic Catalog</h1>
 <% cache @productsonsales do %>
 <% @productsonsales.each do |productsonsale| %>
 <% cache productsonsale do %>
 <div class="entry">
-<%= image_tag(productsonsale.image_url) %>
+<%= link_to image_tag(productsonsale.image_url), line_item_products_path(:productsonsale_id => productsonsale), :method => :post, :remote => true %>
 <h3><%= productsonsale.title %></h3>
 <%= sanitize(productsonsale.description) %>
 <div class="price_line">

@@ -2,10 +2,16 @@ sw:
     layouts:
         application:
             BLUE BEAUTY PARLOUR: "BLUE BEAUTY PARLOUR"
-            home: "Nyumbani"
-            questions: "Maswali"
-            news: "Habari"
-            contact: "Mawasiliano"
+            Orders: "Maagizo"
+            Services: "Huduma"
+            Products: "Bidhaa"
+            Users: "Watumiaji"
+            Logout: "Ingia nje"
+            Home: "Nyumbani"
+            About: "Kuhusu"
+            Login: "Ingia"
+            Signup: "Kuingia"
+            submit: "tuma"
             
     store:
         index:

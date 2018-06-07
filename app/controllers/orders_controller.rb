@@ -3,68 +3,48 @@ class OrdersController < ApplicationController
   before_action :set_cart, only: [:new, :create]
   before_action :ensure_cart_isnt_empty, only: :new
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:new, :create]# GET /orders
-  #..
+
   # GET /orders
   # GET /orders.json
-  
   def index
-     @orders = Order.all  
+    @orders = Order.all
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-  @orders = Order.find(params[:id])
-  respond_to do |format|
-    format.html #show.html.erb
-    format.json {render json: @order}
-    end
-   end
-   
-   def current_cart
-  # where you should find your current cart, i.e.
-  @current_cart ||= Cart.find(session[:cart_id])
-end
+  end
 
   # GET /orders/new
- \
-   def new
+  def new
     @order = Order.new
   end
 
   # GET /orders/1/edit
   def edit
-  @order.save()
   end
 
   # POST /orders
   # POST /orders.json
-def create
+  def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
-     @order.add_line_item_products_from_cart(@cart)
-        respond_to do |format|
-            if @order.save
-                Cart.destroy(session[:cart_id])
-                session[:cart_id] = nil
-                format.html { redirect_to store_index_url, notice:
-                'Thank you for your order.' }
-                format.json { render :show, status: :created,
-                location: @order }
-            else
-                format.html { render :new }
-                format.json { render json: @order.errors,
-                status: :unprocessable_entity }
-            end
-        end
-end
+    @order.add_line_item_products_from_cart(@cart)
 
-  
-  def checkout
- @order = Order.new
- @order.save
-end
+    respond_to do |format|
+      if @order.save
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        OrderMailer.received(@order).deliver_later
+        format.html { redirect_to store_index_url, notice:
+        'Thank you for your order.' }
+        format.json { render :show, status: :created, location: @order }
+      else
+        format.html { render :new }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
@@ -89,8 +69,8 @@ end
       format.json { head :no_content }
     end
   end
-  
-    private
+
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
@@ -100,13 +80,10 @@ end
     def order_params
       params.require(:order).permit(:name, :address, :email, :pay_type)
     end
-	
-	def ensure_cart_isnt_empty
-      if @cart.line_items.empty?
-          redirect_to store_index_url, notice: 'Your cart is empty'
-        end
-        if @cart.line_item_products.empty?
-        redirect_to store_products_index_url, notice: 'Your cart is empty'
+
+    def ensure_cart_isnt_empty
+      if @cart.line_items.empty? && @cart.line_item_products.empty?
+         redirect_to store_index_url, notice: 'Your cart is empty'
       end
-      end
+    end
 end

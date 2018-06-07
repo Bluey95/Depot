@@ -34,6 +34,7 @@ class LineItemProductsController < ApplicationController
 
     respond_to do |format|
       if @line_item_product.save
+        session[:counter] = nil
         format.html { redirect_to store_products_index_url }
         format.js { @current_item = @line_item_product }
         format.json { render :show, status: :created, location: @line_item_product }
@@ -57,6 +58,47 @@ class LineItemProductsController < ApplicationController
       end
     end
   end
+
+  def current_cart
+    @current_cart ||= Cart.find(session[:cart_id])
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def reduce
+    @cart = current_cart
+    @line_item_product = @cart.reduce(params[:id])
+
+    respond_to do |format|
+      if @line_item_product.save
+        format.html { redirect_to store_products_path, notice: 'Line item was successfully updated.' }
+        format.js   { @current_item = @line_item_product }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @line_item_product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def add
+    @cart = current_cart
+    @line_item_product = @cart.add(params[:id])
+
+    respond_to do |format|
+      if @line_item_product.save
+        format.html { redirect_to store_products_path, notice: 'Line item was successfully updated.' }
+        format.js   { @current_item = @line_item_product }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @line_item_product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /line_item_products/1
   # DELETE /line_item_products/1.json

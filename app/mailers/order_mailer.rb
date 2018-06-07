@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-default from: 'Susan Were <susanwere15@gmail.com>'
+default from: 'Blue Beauty Parlour <bluebeautyparlour@gmail.com>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,8 +8,8 @@ default from: 'Susan Were <susanwere15@gmail.com>'
   #
   def received(order)
     @order = order
-mail to: order.email, subject: 'Pragmatic Store Order Confirmation'
-end
+    mail to: order.email, subject: 'Pragmatic Store Order Confirmation'
+  end
  
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -18,8 +18,7 @@ end
   #   en.order_mailer.shipped.subject
   #
   def shipped(order)
-@order = order
-mail to: order.email, subject: 'Pragmatic Store Order Shipped'
-    
+    @order = order
+    mail to: order.email, subject: 'Pragmatic Store Order Shipped'
   end
 end

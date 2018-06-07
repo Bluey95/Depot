@@ -1,27 +1,18 @@
 require 'test_helper'
 
-
 class OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @order = orders(:one)
   end
-  
-  test "requires item in cart" do
- get new_order_url
- assert_redirected_to store_index_path
- assert_equal flash[:notice], 'Your cart is empty'
- end
 
   test "should get index" do
-    post line_items_url, params: { product_id: products(:ruby).id }
-    post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
     get orders_url
     assert_response :success
   end
 
   test "should get new" do
     post line_items_url, params: { product_id: products(:ruby).id }
-    post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
+
     get new_order_url
     assert_response :success
   end
@@ -51,22 +42,15 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy order" do
     assert_difference('Order.count', -1) do
-      delete :destroy, id: @order
+      delete order_url(@order)
     end
-	
+
+    assert_redirected_to orders_url
+  end
+
   test "requires item in cart" do
      get new_order_url
      assert_redirected_to store_index_path
      assert_equal flash[:notice], 'Your cart is empty'
-  end
-  
-   test "should get new" do
-     post line_items_url, params: { product_id: products(:ruby).id }
-     post line_item_products_url, params: { productsonsale_id: productsonsales(:ruby).id }
-    get new_order_url
-     assert_response :success
-  end
-
-    assert_redirected_to orders_url
-  end
+   end
 end

@@ -1,0 +1,2 @@
+class Beautician < ApplicationRecord
+end

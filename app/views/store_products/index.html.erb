@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
 <h6 style = "float:right"><%= @shown_message %></h6>
-<h1>Your Pragmatic Catalog</h1>
+<h1>Find The Best Products</h1>
 <% cache @productsonsales do %>
 <% @productsonsales.each do |productsonsale| %>
-<% cache productsonsale do %>
-<div class="entry">
-<%= link_to image_tag(productsonsale.image_url), line_item_products_path(:productsonsale_id => productsonsale), :method => :post, :remote => true %>
-<h3><%= productsonsale.title %></h3>
-<%= sanitize(productsonsale.description) %>
-<div class="price_line">
-<span class="price"><%= number_to_currency(productsonsale.price) %></span>
-<%= button_to 'Add to Cart', line_item_products_path(productsonsale_id: productsonsale), remote: true %>
-</div>
-</div>
+	<% cache productsonsale do %>
+		<div class="entry col-md-4">
+		<%= link_to image_tag(productsonsale.image_url, :style=>'width:90%; height: 200px'), line_item_products_path(:productsonsale_id => productsonsale), :method => :post, :remote => true %>
+		<h3 style="margin-top: 210px"><%= productsonsale.title %></h3>
+		<div class="price_line col-md-4" style="margin-top: 10px">
+			<span class="price"><%= number_to_currency(productsonsale.price) %></span>
+			<%= button_to 'Buy Now', line_item_products_path(productsonsale_id: productsonsale), remote: true %>
+			</div>
+		</div>
 <% end %>
 <% end %>
 <% end %>

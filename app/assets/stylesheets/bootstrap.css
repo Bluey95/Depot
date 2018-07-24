@@ -1296,6 +1296,9 @@ p {
   line-height: 1.4;
 }
 @media (min-width: 768px) {
+  .pl-md-5{
+    padding-left: 3rem !important;
+  }
   .lead {
     font-size: 21px;
   }
@@ -1609,6 +1612,8 @@ pre code {
   margin-left: auto;
 }
 .row {
+  display: flex;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
 }
@@ -4324,7 +4329,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-nav {
-  margin: 0;
+  margin-left: 50px;
+  margin-bottom: 20px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;

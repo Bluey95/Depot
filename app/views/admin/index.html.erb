@@ -1,3 +1,5 @@
-<h1>Welcome</h1>
-It's <%= Time.now %>
-We have <%= pluralize(@total_orders, "order") %>.
+ <% @users.each do |user| %>
+<h1 style="text-align: center;">Welcome <%= user.name %></h1>
+<p style="text-align: center;">It's <%= Time.now %> <br>
+We have <%= pluralize(@total_orders, "order") %> and <%= pluralize(@total_schedules, "schedule") %> booked.</p>
+<% end %>

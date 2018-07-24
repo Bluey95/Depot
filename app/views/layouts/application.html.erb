@@ -22,7 +22,8 @@
   </head>
 
   <body class='<%= controller.controller_name %>'>
- <nav class="navbar transparent navbar-inverse navbar-fixed-top">
+
+ <nav class="navbar transparent navbar-inverse navbar-fixed-top navbar-expand-md top-nav">
  <div class="navbar-inner">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -31,30 +32,31 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">BBP</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><%= link_to t('.Home'), home_page_path %></li>
-        <li><%= link_to t('.About'), pages_about_path%></li>
-        <li><%= link_to t('.Services'), store_index_path%></li>
-        <li><%= link_to t('.Products'), store_products_index_path%></li>
-        <li><%= link_to t('.Login'), login_path, method: :get %></li>
-        <li><%= link_to t('.Signup'), login_path, method: :get %></li>
-        <li><%= link_to t('.Logout'), logout_path, method: :delete %></li>
-  </ul>
-        
-      </ul>
-      <form class="form-inline navbar-right">
-      <%= form_tag home_page_path, class: 'locale' do %>
-        <%= select_tag 'set_locale',
-            options_for_select(LANGUAGES, I18n.locale.to_s),
-            onchange: 'this.form.submit()' %>
-        <%= submit_tag t('.submit') %>
-        <%= javascript_tag "$('.locale input').hide()" %></br>
-        <style="color:#000638;"><%= Time.now.month %>/<%= Time.now.day %>/<%= Time.now.year %>
-    <% end %>
-  </form>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
+      <ul class="navbar-nav" style="margin-left: 10px; margin-bottom: 15px">
+        <li class="nav-item" style="float: left; margin-right: 200px"><a class="navbar-brand" href="#">BBP</a></li>
+        <li class="nav-item"><%= link_to t('.Home'), home_page_path, :class=>"nav-link"%></li>
+        <li class="nav-item"><%= link_to t('.About'), pages_about_path, :class=>"nav-link"%></li>
+        <li class="nav-item"><%= link_to t('.Services'), store_index_path, :class=>"nav-link"%></li>
+        <li class="nav-item"><%= link_to t('.Products'), store_products_index_path, :class=>"nav-link"%></li>
+        <li class="nav-item"><%= link_to t('.Login'), login_path, method: :get, :class=>"nav-link" %></li>
+        <li class="nav-item"><%= link_to t('.Signup'), login_path, method: :get, :class=>"nav-link" %></li>
+        <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete, :class=>"nav-link" %></li>
+        <li class="nav-item">
+          <form class="form-inline">
+            <%= form_tag home_page_path, class: 'locale' do %>
+              <%= select_tag 'set_locale',
+                  options_for_select(LANGUAGES, I18n.locale.to_s),
+                  onchange: 'this.form.submit()' %>
+              <%= submit_tag 'Submit' %>
+              <%= javascript_tag "$('.locale input').hide()" %></br>
+              <style="color:#ffffff;"><%= Time.now.month %>/<%= Time.now.day %>/<%= Time.now.year %>
+            <% end %>
+          </form>
+        </li>
+     </ul>
     </div>
   </div>
 </nav>
@@ -75,6 +77,8 @@
 <li><%= link_to t('.Services'), products_path %></li>
 <li><%= link_to t('.Products'), productsonsales_path %></li>
 <li><%= link_to t('.Users'), users_path %></li>
+<li><%= link_to 'Schedules', schedules_path %></li>
+<li><%= link_to 'Beauticians', beauticians_path %></li>
 <li><%= button_to t('.Logout'), logout_path, method: :delete %></li>
 </ul>
 

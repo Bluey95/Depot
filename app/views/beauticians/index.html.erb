@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Beauticians <%= link_to 'New Beautician', new_beautician_path, :style=>'float:right; font-size:12px' %></h1>
+
+
+
+<table>
+<% @beauticians.each do |beautician| %>
+<div class="entry col-md-4">
+<%= image_tag(beautician.image_url, :style=>'width:90%; height: 200px') %>
+<h2 style="margin-top: 210px">ID: <%= beautician.user_id %></h2>
+<h2><%= beautician.first_name %> <%= beautician.last_name %></h2>
+<h4><%= beautician.phone %></h4>
+<h5><%= truncate(strip_tags(beautician.bio),
+length: 80) %></h5>
+<h5>Experience: <%= truncate(strip_tags(beautician.experience),
+length: 80) %></h5>
+
+<h6>
+<%= link_to 'Show', beautician %>
+<%= link_to 'Edit', edit_beautician_path(beautician) %>
+<%= link_to 'Destroy', beautician, method: :delete, data: { confirm: 'Are you sure?' } %>
+</h6>
+<% end %>
+</table>
+
+<br>
+
+

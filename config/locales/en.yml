@@ -32,6 +32,7 @@ en:
             Home: "Home"
             About: "About"
             Login: "Login"
+            Logout: "Logout"
             Signup: "Signup"
             submit: "submit"
             

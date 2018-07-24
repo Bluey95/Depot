@@ -10,6 +10,7 @@ es:
             Home: "Casa"
             About: "Acerca de"
             Login: "Iniciar sesión"
+            Logout: "Iniciar sesión"
             Signup: "Regístrate"
             submit: "enviar"
             

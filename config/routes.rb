@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :beauticians
+  resources :schedules
+  resources :clients
+  resources :services
   resources :orders
   resources :line_item_products
   resources :line_items
@@ -34,11 +38,12 @@ get 'admin/index'
   get :who_bought, on: :member
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  
   scope '(:locale)' do
 resources :orders
 resources :line_items
 resources :carts
+
 root 'pages#home', as: 'home_page', via: :all
  end
 

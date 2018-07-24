@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+<table>
+<% @services.each do |service| %>
+<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+<td>
+<%= image_tag(service.image, class: 'list_image') %>
+</td>
+<td class="list_description">
+<dl>
+<dt><%= service.category %></dt>
+<dt><%= service.title %></dt>
+<dd><%= truncate(strip_tags(service.description),
+length: 80) %></dd>
+<dt><%= service.duration %> hrs</dt>
+<dt> Ksh <%= service.cost %></dt>
+</dl>
+</td>
+<td class="list_actions">
+<%= link_to 'Show', service %><br/>
+<%= link_to 'Edit', edit_service_path(service) %><br/>
+<%= link_to 'Destroy', service, method: :delete,
+data: { confirm: 'Are you sure?' } %>
+</td>
+</tr>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Service', new_service_path %>

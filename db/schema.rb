@@ -10,11 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508014638) do
+ActiveRecord::Schema.define(version: 20180715014430) do
+
+  create_table "_services_old", force: :cascade do |t|
+    t.string   "image"
+    t.string   "title"
+    t.integer  "duration"
+    t.integer  "cost"
+    t.string   "category"
+    t.string   "language"
+    t.string   "level"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "beauticians", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.text     "bio"
+    t.string   "experience"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_beauticians_on_user_id"
+  end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "photo"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.text     "bio"
+    t.integer  "user_id"
+    t.integer  "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_clients_on_account_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "line_item_products", force: :cascade do |t|
@@ -68,6 +108,18 @@ ActiveRecord::Schema.define(version: 20180508014638) do
     t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "start"
+    t.datetime "stop"
+    t.integer  "beautician_id"
+    t.integer  "account_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["account_id"], name: "index_schedules_on_account_id"
+    t.index ["beautician_id"], name: "index_schedules_on_beautician_id"
   end
 
   create_table "users", force: :cascade do |t|

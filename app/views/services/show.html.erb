@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @service.image %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @service.title %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @service.duration %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @service.cost %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @service.category %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @service.description %>
+</p>
+
+<%= link_to schedules_url(:service_id => @service.id), class: "course-btn" do %><i class="fa fa-calendar-plus-o"></i> Book This Service<% end %>
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>

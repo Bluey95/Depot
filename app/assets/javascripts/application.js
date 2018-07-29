@@ -18,9 +18,6 @@
 //= require_tree .
 //= require magnific-popup
 
-$(".store .entry > img").not(".clickable").addClass("clickable").click -> 
-console.log('image clicked') 
-$(this).parent().find(':submit').click()
 $(window).scroll(function () {
 if ($(window).scrollTop() >= 50) {
 $('.navbar').css('background','#000638');

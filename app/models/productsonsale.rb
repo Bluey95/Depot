@@ -20,6 +20,10 @@ has_many :line_item_products
 has_many :orders, through: :line_item_products
 before_destroy :ensure_not_referenced_by_any_line_item_product
 
+def self.search(search)
+  where("title LIKE ?", "%#{search}%") 
+end
+
 private
  # ensure that there are no line item products referencing this product
   def ensure_not_referenced_by_any_line_item_product

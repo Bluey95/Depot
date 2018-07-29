@@ -21,6 +21,7 @@ get 'admin/index'
  get 'products' => 'products#index'
  get 'productsonsales' => 'productsonsales#index'
  get 'users' => 'users#index'
+ get 'users/new' => 'users#new'
 
   
   controller :sessions do

@@ -1,8 +1,15 @@
-<p id="notice">
-    <%= notice %>
-</p>
+<p id="notice"><%= notice %></p>
 
-<h1>Products Available On Sale</h1>
+<h1>Products On Sale</h1>
+<%= form_tag(productsonsales_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+<%= submit_tag "Search" %>
+<% end %>
+<% if @productsonsales.present? %>
+  <%= render @productsonsales %>
+<% else %>
+  <p>There are no products containing the term(s) <%= params[:search] %>.</p>
+<% end %>
 
     <table>
         <% @productsonsales.each do |productsonsale| %>

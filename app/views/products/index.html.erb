@@ -2,13 +2,13 @@
 
 <h1>Services</h1>
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Services" %>
 <%= submit_tag "Search" %>
 <% end %>
 <% if @products.present? %>
   <%= render @products %>
 <% else %>
-  <p>There are no products containing the term(s) <%= params[:search] %>.</p>
+  <p>There are no services containing the term(s) <%= params[:search] %>.</p>
 <% end %>
 
 <%= link_to 'New Services', new_product_path %>

@@ -42,8 +42,8 @@
         <li class="nav-item"><%= link_to t('.Services'), store_index_path, :class=>"nav-link"%></li>
         <li class="nav-item"><%= link_to t('.Products'), store_products_index_path, :class=>"nav-link"%></li>
         <li class="nav-item"><%= link_to t('.Login'), login_path, method: :get, :class=>"nav-link" %></li>
-        <li class="nav-item"><%= link_to t('.Signup'), login_path, method: :get, :class=>"nav-link" %></li>
-        <li class="nav-item"><%= link_to 'Logout', logout_path, method: :delete, :class=>"nav-link" %></li>
+        <li class="nav-item"><%= link_to t('.Signup'), users_new_path, method: :get, :class=>"nav-link" %></li>
+        <li class="nav-item"><%= link_to 'Logout', home_page_path, method: :delete, :class=>"nav-link" %></li>
         <li class="nav-item">
           <form class="form-inline">
             <%= form_tag home_page_path, class: 'locale' do %>

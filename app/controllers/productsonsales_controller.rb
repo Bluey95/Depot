@@ -5,6 +5,11 @@ class ProductsonsalesController < ApplicationController
   # GET /productsonsales.json
   def index
     @productsonsales = Productsonsale.all
+     if params[:search]
+    @productsonsales = Productsonsale.search(params[:search]).order("title")
+  else
+    @productsonsales = Productsonsale.all.order('created_at DESC')
+  end
   end
 
   # GET /productsonsales/1
